@@ -49,7 +49,7 @@
             <li>✔ Custom Reports</li>
           </ul>
 
-          <button class="w-full py-3 bg-gray-800 text-white rounded-full  transition">
+          <button class="w-full py-3 bg-gray-800 text-white rounded-full  transition hover:shadow-xl transition">
             Get Started
           </button>
         </div>
