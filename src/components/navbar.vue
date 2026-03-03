@@ -9,6 +9,7 @@
         <a href="#" class="hover:text-white transition hover:outline px-3 ">Home</a>
         <a href="#" class="hover:text-white transition">About</a>
         <a href="#" class="hover:text-white transition">Contact</a>
+        <a href="#" class="hover:text-white transition">Cart</a>
       </div>
 
       <!-- Mobile Hamburger -->
