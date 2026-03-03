@@ -1,18 +1,13 @@
 <script setup>
 
 import navbar from './components/navbar.vue'
-import hero from './components/hero.vue'
-import cards from './components/cards.vue';
-import gallery from './components/gallery.vue';
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
 <navbar/>
-<hero/>
-<cards/>
-<gallery/>
+<RouterView/>
 </template>
-
 <style scoped>
 
 </style>

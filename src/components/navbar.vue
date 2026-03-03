@@ -6,10 +6,10 @@
 
       <!-- Desktop Links -->
       <div class="hidden md:flex space-x-6 text-gray-100">
-        <a href="#" class="hover:text-white transition hover:outline px-3 ">Home</a>
-        <a href="#" class="hover:text-white transition">About</a>
-        <a href="#" class="hover:text-white transition">Contact</a>
-        <a href="#" class="hover:text-white transition">Cart</a>
+        <a href="/" class="hover:text-white transition hover:outline px-3 ">Home</a>
+        <a href="/about" class="hover:text-white transition">About</a>
+        <a href="/contact" class="hover:text-white transition">Contact</a>
+     
       </div>
 
       <!-- Mobile Hamburger -->
@@ -24,9 +24,9 @@
     <!-- Mobile Menu -->
     <transition name="fade">
       <div v-if="isOpen" class="md:hidden px-6 pb-4 space-y-3 text-gray-100">
-        <a href="#" class="block hover:text-white transition">Home</a>
-        <a href="#" class="block hover:text-white transition">About</a>
-        <a href="#" class="block hover:text-white transition">Contact</a>
+        <a href="/" class="block hover:text-white transition">Home</a>
+        <a href="/about" class="block hover:text-white transition">About</a>
+        <a href="/contact" class="block hover:text-white transition">Contact</a>
       </div>
     </transition>
   </nav>
