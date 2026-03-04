@@ -4,7 +4,7 @@
 
 
 
-  <section class="backdrop-blur py-10">
+  <section class="backdrop-blur py-10 mt-10 mb-10">
     <div class="max-w-7xl mx-auto px-4">
       
       <!-- Title -->
