@@ -79,5 +79,5 @@
 </template>
 
 <script setup>
-// Static example — can be converted to props/dynamic later
+
 </script>
