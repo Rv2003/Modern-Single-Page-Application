@@ -1,12 +1,12 @@
 <template>
-  <section class="relative text-white overflow-hidden">
+  <section class="relative text-white overflow-hidden h-200">
 
     <!-- Background Layers -->
     <div class="flex flex-row absolute inset-0 -z-5 ">
 
       <!-- Image 1 -->
       <img :src="img1"
-        class="basis-1/3  blur-sm scale-110 opacity-60 mix-blend-overlay" />
+        class="basis-1/3  blur-sm scale-110 opacity-60 mix-blend-overlay " />
 
       <!-- Image 2 -->
       <img :src="img2"
@@ -24,13 +24,13 @@
       <div class="text-center max-w-3xl mx-auto animate-fadeUp">
 
         <!-- Badge -->
-        <span class="inline-block mb-6 px-4 py-1 text-sm bg-white/20 rounded-full backdrop-blur">
-          🚀 New Release
+        <span class="inline-block mb-6 px-4 py-1 text-sm bg-white/20 rounded-full backdrop-blur" v-show="storeuser.name">
+          Welcome,{{storeuser.name}}
         </span>
 
         <!-- Heading -->
-        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
-          Build Modern Apps with
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 pt-40">
+          Build Modern Apps with 
           <span class="bg-white text-transparent bg-clip-text">
             Vue & Tailwind
           </span>
@@ -63,6 +63,9 @@
 import img1 from '../assets/DSC_7809.png'
 import img2 from '../assets/DSC_7855.png'
 import img3 from '../assets/DSC_7809.png'
+import {userstore} from "@/stores/login";
+
+const storeuser = userstore();
 </script>
 
 <style>

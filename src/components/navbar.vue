@@ -1,6 +1,6 @@
 <template>
   <nav class="fixed top-0 w-full z-50 bg-white/5 backdrop-blur-md border-b border-white/10">
-    <div class="max-w-8xl mx-auto px-5 flex justify-between items-center h-16">
+    <div class="max-w-8xl mx-auto px-5 flex justify-between items-center h-20">
       <!-- Logo -->
       <div class="text-lg-left font-medium tracking-wide">Brand</div>
 
@@ -12,9 +12,25 @@
        <a href="#"
    class="text-gray-700 font-medium tracking-wide
           hover:text-black
-          transition duration-200">
+          transition duration-200" v-show="!token" @click="login()">
   Log in
 </a>
+
+<a href="#"
+   class="text-gray-700 font-medium tracking-wide
+          hover:text-black
+          transition duration-200" v-show="token" @click="logout()">
+  Log out
+</a>
+
+<img 
+  v-if="token"
+  :src="image"
+  class="w-10 h-10 rounded-full object-cover border
+         transition-all duration-500 ease-out
+         scale-100 opacity-100
+         animate-fadeIn"
+/>
       </div>
 
       <!-- Mobile Hamburger -->
@@ -39,13 +55,50 @@
 </template>
 
 <script setup lang="ts">
+import router from "@/Router";
 import { ref } from "vue";
+import {userstore} from "@/stores/login";
 
+const storeuser = userstore();
 const isOpen = ref<boolean>(false);
+const token=ref();
+const image=ref();
 
 const toggleMenu = (): void => {
   isOpen.value = !isOpen.value;
 };
+
+function login( ){
+fetch('https://dummyjson.com/auth/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    
+    username: 'emilys',
+    password: 'emilyspass',
+    expiresInMins: 30, // optional, defaults to 60
+  }),
+  credentials: 'include' // Include cookies (e.g., accessToken) in the request
+})
+.then(res => res.json())
+.then(data => {
+  token.value = data.accessToken; 
+  image.value=data.image;  
+  storeuser.name=data.username;
+  console.log(token);
+
+  // store in localStorage
+  localStorage.setItem("token", token.value);
+  
+});
+}
+
+function logout(){
+  token.value=null;
+  storeuser.name=null;
+  localStorage.removeItem("token");
+
+}
 </script>
 
 <style>
@@ -58,4 +111,7 @@ const toggleMenu = (): void => {
   opacity: 0;
   transform: translateY(-10px);
 }
+
+
+
 </style>
