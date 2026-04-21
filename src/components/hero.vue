@@ -1,4 +1,5 @@
 <template>
+  
   <section class="relative text-white overflow-hidden h-200">
 
     <!-- Background Layers -->

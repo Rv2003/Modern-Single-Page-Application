@@ -34,7 +34,7 @@
         </ul>
 
         <!-- Button -->
-        <button class="w-full py-3 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition">
+        <button class="w-full py-3 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition" @click="alert()">
           Get Started
         </button>
 
@@ -47,6 +47,14 @@
 <script setup>
 import packages from '../assets/package.json'
 import { ref } from 'vue'
+ import {userstore} from "@/stores/login";
 
+const storeuser = userstore();
 const pack = ref(packages)
+
+function alert(){
+if (storeuser.token==null){
+storeuser.show=true
+}
+}
 </script>

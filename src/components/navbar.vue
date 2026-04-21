@@ -12,19 +12,19 @@
        <a href="#"
    class="text-gray-700 font-medium tracking-wide
           hover:text-black
-          transition duration-200" v-show="!token" @click="login()">
+          transition duration-200" v-show="!storeuser.token" @click="login()">
   Log in
 </a>
 
 <a href="#"
    class="text-gray-700 font-medium tracking-wide
           hover:text-black
-          transition duration-200" v-show="token" @click="logout()">
+          transition duration-200" v-show="storeuser.token" @click="logout()">
   Log out
 </a>
 
 <img 
-  v-if="token"
+  v-if="storeuser.token"
   :src="image"
   class="w-10 h-10 rounded-full object-cover border
          transition-all duration-500 ease-out
@@ -51,7 +51,14 @@
         
       </div>
     </transition>
+
+
+
   </nav>
+  <div  v-if!="storeuser.show"  class="notif-bar">
+  Please log in to continue
+</div>
+
 </template>
 
 <script setup lang="ts">
@@ -61,43 +68,33 @@ import {userstore} from "@/stores/login";
 
 const storeuser = userstore();
 const isOpen = ref<boolean>(false);
-const token=ref();
+//const token=ref();
 const image=ref();
 
 const toggleMenu = (): void => {
   isOpen.value = !isOpen.value;
 };
 
-function login( ){
-fetch('https://dummyjson.com/auth/login', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    
-    username: 'emilys',
-    password: 'emilyspass',
-    expiresInMins: 30, // optional, defaults to 60
-  }),
-  credentials: 'include' // Include cookies (e.g., accessToken) in the request
-})
-.then(res => res.json())
-.then(data => {
-  token.value = data.accessToken; 
-  image.value=data.image;  
-  storeuser.name=data.username;
-  console.log(token);
-
-  // store in localStorage
-  localStorage.setItem("token", token.value);
-  
-});
+function login() {
+  fetch('https://dummyjson.com/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      username: 'emilys',
+      password: 'emilyspass',
+      expiresInMins: 30,
+    }),
+    credentials: 'include'
+  })
+  .then(res => res.json())
+  .then(data => {
+    storeuser.saveUser(data);  
+  });
 }
 
-function logout(){
-  token.value=null;
-  storeuser.name=null;
-  localStorage.removeItem("token");
 
+function logout() {
+  storeuser.clearUser();       
 }
 </script>
 
