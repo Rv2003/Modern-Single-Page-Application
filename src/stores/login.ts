@@ -6,6 +6,7 @@ export const userstore = defineStore('login', () => {
   const name = ref<string | null>(localStorage.getItem('name'));
   const token = ref<string | null>(localStorage.getItem('token'));
   const image = ref<string | null>(localStorage.getItem('image'));
+  const booking = ref<string | null>(localStorage.getItem('image'));
   const notifkey = ref<number>(0);
   const show = ref<boolean>(false);
 

@@ -1,6 +1,21 @@
 <template>
   <section class="py-20 px-6 bg-gray-50 min-h-screen">
+<!-- Toast -->
+<div class="fixed top-6 right-6 z-50" v-show='notif'>
+  
+  <div class="bg-red-600 text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-3 animate-fade-in">
 
+    <!-- Icon -->
+    <span class="text-lg">🔒</span>
+
+    <!-- Message -->
+    <p class="text-sm font-medium">
+      Please log in to continue
+    </p>
+
+  </div>
+
+</div>
     <!-- Heading -->
     <div class="text-center mb-12">
       <h1 class="text-4xl font-bold text-gray-800">Our Packages</h1>
@@ -34,7 +49,7 @@
         </ul>
 
         <!-- Button -->
-        <button class="w-full py-3 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition" @click="alert()">
+        <button class="w-full py-3 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition" @click="goToBooking(packs)">
           Get Started
         </button>
 
@@ -44,17 +59,46 @@
   </section>
 </template>
 
-<script setup>
-import packages from '../assets/package.json'
+<script setup lang="ts">
+import router from '@/Router';
+import packages from '../assets/packages.json'
 import { ref } from 'vue'
- import {userstore} from "@/stores/login";
-
-const storeuser = userstore();
+import { useBookingStore } from '@/stores/booking'
 const pack = ref(packages)
 
-function alert(){
-if (storeuser.token==null){
-storeuser.show=true
+
+import { userstore } from '@/stores/login';
+
+
+const booking = useBookingStore()
+const storeuser = userstore();
+
+function goToBooking(packs: any) {
+
+  if (storeuser.token!=null){
+   booking.setPackage(packs.name)   
+   router.push('/booking')}
+  else{
+   window.alert("Log In to Continue")
+  }       
 }
-}
+
 </script>
+
+<style>
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+</style>

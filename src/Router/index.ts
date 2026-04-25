@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import homeview from '@/views/homeview.vue';
 import card from '@/views/card.vue';
 import gallery from '@/views/gallery.vue';
+import Booking from '@/views/booking.vue';
 
 
 const router=createRouter({
@@ -19,7 +20,13 @@ const router=createRouter({
             path:'/gallery',
             name:'galley',
             component: gallery
+        },
+        {
+            path:'/booking',
+            name:'booking',
+            component: Booking
         }
+
         
     ]
 });

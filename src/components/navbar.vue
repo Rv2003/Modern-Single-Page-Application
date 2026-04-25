@@ -94,7 +94,8 @@ function login() {
 
 
 function logout() {
-  storeuser.clearUser();       
+  storeuser.clearUser();   
+  router.push('/')    
 }
 </script>
 
