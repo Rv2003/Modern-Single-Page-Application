@@ -1,7 +1,7 @@
 <template>
   <section class="py-20 px-6 bg-gray-50 min-h-screen">
 <!-- Toast -->
-<div class="fixed top-6 right-6 z-50" v-show='notif'>
+<div class="fixed top-6 right-6 z-50">
   
   <div class="bg-red-600 text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-3 animate-fade-in">
 
