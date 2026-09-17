@@ -1,0 +1,25 @@
+
+
+[
+    {
+        "name": "Basic",
+        "description": "Ideal for intimate ceremonies, portraits & short events",
+        "d1": "2–3 hours coverage",
+        "d2": "Delivery within 5–7 days",
+        "d3": "50–80 edited photos"
+    },
+    {
+        "name": "Gold",
+        "description": "Most popular for weddings, receptions & corporate galas",
+        "d1": "4–6 hours coverage",
+        "d2": "Delivery within 3–5 days",
+        "d3": "120–180 edited photos"
+    },
+    {
+        "name": "Diamond",
+        "description": "Comprehensive full-day documentary & cinematic 4K film",
+        "d1": "Full-day coverage",
+        "d2": "250+ edited photos",
+        "d3": "Cinematic 4K highlight film"
+    }
+]
