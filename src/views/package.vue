@@ -1,9 +1,9 @@
 <script setup>
-import gallery from '../components/gallery.vue';
+import packages from '../components/package.vue';
 </script>
 
 <template>
   <div class="pt-12 sm:pt-16">
-    <gallery />
+    <packages />
   </div>
 </template>
